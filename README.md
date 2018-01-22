@@ -16,6 +16,7 @@
 ### 2.格子列表，暂时只支持竖向滚动
 	-- 传统的列表控件一般都是一次性加载所有格子，当数量太多时会导致一定卡顿现象，体验相当不好
 	-- 格子列表控件只加载当前可视区域内的格式，一般用于游戏背包列表功能
+	-- 该控件内部逻辑参考u3d扩展组件LoopScrollRect(https://github.com/qiankanglai/LoopScrollRect)
 
 	-- 面板可视化（滚动）区域大小
 	local oGridSize = cc.size(430, 300)
