@@ -53,20 +53,17 @@ function GridView:ctor(viewSize, cellSize, columnCount, marginSize)
 	self.m_nEndItemIdx = 1		--
 	self.m_nThreshold = self.m_cellSize.height * 1.1
 	
+	-- 默认开启格子缓存复用
 	self.m_bEnableCache = true
 	self.m_tCacheQueue = {}		--
+	-- 默认强制设置每个格式的大小
 	self.m_bForceCellSize = true
-	self.m_bComponentMgr = true
 	
 	self:setNodeEventEnabled(true)
 end
 
 function GridView:setForceCellSize(bEnable)
 	self.m_bForceCellSize = bEnable
-end
-
-function GridView:setComponentMgr(bEnable)
-	self.m_bComponentMgr = bEnable
 end
 
 function GridView:setCacheEnable(bEnable)
@@ -87,9 +84,6 @@ end
 
 function GridView:clearCache()
 	for _i, v in ipairs(self.m_tCacheQueue) do
-		if self.m_bComponentMgr then
-			g_oComponentMgr:RemoveComponent(v)
-		end
 		v:release()
 	end
 	self.m_tCacheQueue = {}
@@ -162,11 +156,7 @@ function GridView:removeGridCell(gridCell, bIgnoreRender)
 			if self.m_bEnableCache then
 				self.m_contentPanel:removeChild(gridCell)
 			else
-				if self.m_bComponentMgr then
-					g_oComponentMgr:RemoveComponent(gridCell)
-				else
-					self.m_contentPanel:removeChild(gridCell)
-				end
+				self.m_contentPanel:removeChild(gridCell)
 			end
 			result = true
 			break
@@ -190,9 +180,6 @@ end
 --组件的创建和销毁统一组件的管理器去处理
 function GridView:removeAllNode()
 	for k, v in pairs(self.m_gridCells) do
-		if self.m_bComponentMgr then
-			g_oComponentMgr:RemoveComponent(v)
-		else
 			v:removeSelf()
 		end
 	end
