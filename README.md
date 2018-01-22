@@ -6,6 +6,8 @@
 	require("utils.CocosEx")
 	
 ### 1.富文本
+	-- 引用1(https://github.com/u0u0/lua-htmlparser)
+	-- 引用2(https://github.com/u0u0/Lua-utils/tree/master/src/app/utils)
 	local txtTemp = UIRichTextEx.new("")
 	txtTemp:setAnchorPoint(cc.p(0, 0.5))
 	txtTemp:setPosition(cc.p(0, 0))
