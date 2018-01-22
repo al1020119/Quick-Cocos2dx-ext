@@ -10,6 +10,8 @@
 	txtTemp:setPosition(cc.p(0, 0))
 	txtTemp:setString("没有颜色<t c='#FFEE94'>有颜色</t>")
 
+![Demo1](demo/demo1.png)
+
 ### 2.格子列表，暂时只支持竖向滚动
 	-- 面板可视化（滚动）区域大小
 	local oGridSize = cc.size(430, 300)
@@ -51,5 +53,7 @@
 	-- 设置数据源
 	oGridViewCom:setDataSource(oGridDataSource)
 	oGridViewCom:refillCells()
+![Demo2](demo/demo2.png)
+![Demo3](demo/demo3.png)
 
-### 3.
+### 3.未完待续。。。
